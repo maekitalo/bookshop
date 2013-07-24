@@ -11,3 +11,35 @@
 *.lai
 *.la
 *.a
+
+# vim swap files
+*.swp
+
+# Autotools stuff
+.deps
+.libs
+.dirstamp
+Makefile
+Makefile.in
+/aclocal.m4
+/autom4te.cache/
+/config.guess
+/config.status
+/config.sub
+/configure
+/config.log
+/depcomp
+/install-sh
+/missing
+/src/config.h.in
+/src/config.h
+stamp-h1
+*.deps
+
+# bookshop specific files
+/src/bookshop
+/src/resources.cpp
+/src/view/products.cpp
+/src/view/cart.cpp
+/src/index.cpp
+/src/webmain.cpp
