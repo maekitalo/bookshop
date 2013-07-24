@@ -20,6 +20,7 @@
 #include <iostream>
 #include <configuration.h>
 #include <tnt/tntnet.h>
+#include <tnt/configurator.h>
 #include <cxxtools/log.h>
 
 int main(int argc, char* argv[])
@@ -37,6 +38,9 @@ int main(int argc, char* argv[])
 
     tnt::Tntnet app;
     app.listen(configuration.listenIp(), configuration.listenPort());
+
+    tnt::Configurator configurator(app);
+    configurator.setSessionTimeout(configuration.sessionTimeout());
 
     // configure static stuff
     app.mapUrl("^/resources/(.*)", "resources")

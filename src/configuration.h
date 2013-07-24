@@ -35,8 +35,11 @@ class Configuration
     const std::string& listenIp() const
     { return _listenIp; }
 
-    unsigned short     listenPort() const
+    unsigned short listenPort() const
     { return _listenPort; }
+
+    unsigned sessionTimeout() const
+    { return _sessionTimeout; }
 
     const std::string& dburl() const
     { return _dburl; }
@@ -51,6 +54,7 @@ class Configuration
 
     std::string    _listenIp;
     unsigned short _listenPort;
+    unsigned       _sessionTimeout;
     std::string    _dburl;
     cxxtools::SerializationInfo _loggingConfiguration;
 };
