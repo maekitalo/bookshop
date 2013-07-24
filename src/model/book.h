@@ -59,6 +59,11 @@ class Book
     double _price;
 };
 
+inline bool operator== (const Book& b1, const Book& b2)
+{
+  return b1.isbn() == b2.isbn();
+}
+
 typedef std::vector<Book> Books;
 
 #endif // MODEL_BOOK_H

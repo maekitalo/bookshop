@@ -39,7 +39,8 @@ stamp-h1
 # bookshop specific files
 /src/bookshop
 /src/resources.cpp
-/src/view/products.cpp
 /src/view/cart.cpp
+/src/view/order.cpp
+/src/view/products.cpp
 /src/index.cpp
 /src/webmain.cpp

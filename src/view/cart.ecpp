@@ -1,1 +1,39 @@
+<%session scope="shared" include="model/shoppingcart.h">
+Shoppingcart shoppingcart;
+</%session>
 <h1>Your shopping cart</h1>
+
+<form method="post">
+  <div id="shoppingcart">
+    <table>
+      <thead>
+        <tr>
+          <th>isbn</th>
+          <th>title</th>
+          <th>author</th>
+          <th>price</th>
+          <th>amount</th>
+          <th>sum</th>
+        </tr>
+      </thead>
+      <tbody>
+% for (unsigned n = 0; n < shoppingcart.countProducts(); ++n) {
+        <tr>
+          <td><$ shoppingcart.item(n).book().isbn() $></td>
+          <td><$ shoppingcart.item(n).book().title() $></td>
+          <td><$ shoppingcart.item(n).book().author() $></td>
+          <td><$ shoppingcart.item(n).book().price() $></td>
+          <td><input type="text" name="amount" value="<$ shoppingcart.item(n).amount() $>"></td>
+          <td><$ shoppingcart.item(n).priceSum() $></td>
+        </tr>
+% }
+        <tr>
+          <td colspan="5"></td>
+          <td><$ shoppingcart.priceSum() $></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <input type="submit" name="updateAmount" value="update amount">
+</form>

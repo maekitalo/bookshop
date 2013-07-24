@@ -15,9 +15,11 @@ Books books;
   <input type="submit" name="author" value="author">
 </form>
 
+<form method="post">
 <div id="result">
   <table>
     <tr>
+      <th></th>
       <th>isbn</th>
       <th>title</th>
       <th>author</th>
@@ -25,6 +27,7 @@ Books books;
     </tr>
 % for (unsigned n = 0; n < books.size(); ++n) {
     <tr>
+      <td><input type="checkbox" name="isbn" value="<$ books[n].isbn() $>"></td>
       <td><$ books[n].isbn() $></td>
       <td><$ books[n].title() $></td>
       <td><$ books[n].author() $></td>
@@ -32,4 +35,6 @@ Books books;
     </tr>
 % }
   </table>
+  <input type="submit" name="add" value="add items to shopping cart">
 </div>
+</form>

@@ -22,6 +22,8 @@
 #include <tnt/httprequest.h>
 #include <tnt/httpreply.h>
 #include <manager/bookmanager.h>
+#include <model/book.h>
+#include <model/shoppingcart.h>
 #include <cxxtools/log.h>
 
 log_define("controller.products")
@@ -39,26 +41,42 @@ namespace
   unsigned ProductsController::operator() (tnt::HttpRequest& request, tnt::HttpReply& reply, tnt::QueryParams& qparam)
   {
     TNT_SESSION_SHARED_VAR(Books, books, ());
+    TNT_SESSION_SHARED_VAR(Shoppingcart, shoppingcart, ());
 
     log_debug("products controller");
 
     BookManager bookManager;
-    std::string searchtext = qparam.arg<std::string>("searchtext");
-    if (qparam.arg<bool>("isbn"))
+
+    if (qparam.arg<bool>("add"))
     {
-      log_debug("search by isbn " << searchtext);
-      books.clear();
-      books.push_back(bookManager.getBookByIsbn(searchtext));
+      log_debug("add q=" << qparam.getUrl());
+      std::vector<std::string> isbns = qparam.args<std::string>("isbn");
+      log_debug(isbns.size() << " isbns");
+      for (unsigned n = 0; n < isbns.size(); ++n)
+      {
+        log_debug("isbn[" << n << "]=\"" << isbns[n] << '"');
+        shoppingcart.addBook(bookManager.getBookByIsbn(isbns[n]));
+      }
     }
-    else if (qparam.arg<bool>("title"))
+    else
     {
-      log_debug("search by title " << searchtext);
-      books = bookManager.getBooksByTitle(searchtext);
-    }
-    else if (qparam.arg<bool>("author"))
-    {
-      log_debug("search by author " << searchtext);
-      books = bookManager.getBooksByAuthor(searchtext);
+      std::string searchtext = qparam.arg<std::string>("searchtext");
+      if (qparam.arg<bool>("isbn"))
+      {
+        log_debug("search by isbn " << searchtext);
+        books.clear();
+        books.push_back(bookManager.getBookByIsbn(searchtext));
+      }
+      else if (qparam.arg<bool>("title"))
+      {
+        log_debug("search by title " << searchtext);
+        books = bookManager.getBooksByTitle(searchtext);
+      }
+      else if (qparam.arg<bool>("author"))
+      {
+        log_debug("search by author " << searchtext);
+        books = bookManager.getBooksByAuthor(searchtext);
+      }
     }
 
     return DECLINED;

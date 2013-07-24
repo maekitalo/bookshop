@@ -5,6 +5,7 @@ bin_PROGRAMS = bookshop
 ecppSources = \
     index.ecpp \
 	view/cart.ecpp \
+	view/order.ecpp \
 	view/products.ecpp \
     webmain.ecpp
 
@@ -13,9 +14,11 @@ staticSources = \
 
 bookshop_SOURCES = \
 	configuration.cpp \
+	controller/cart.cpp \
 	controller/products.cpp \
 	main.cpp \
 	manager/bookmanager.cpp \
+	model/shoppingcart.cpp \
 	$(ecppSources)
 
 nodist_bookshop_SOURCES = \
