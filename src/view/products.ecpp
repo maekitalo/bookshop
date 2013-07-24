@@ -1,0 +1,35 @@
+<%args>
+searchtype = "isbn";
+searchtext;
+</%args>
+<%session scope="shared" include="model/book.h">
+Books books;
+</%session>
+<h1>Products</h1>
+
+<form method="post">
+  search:
+  <input type="text" name="searchtext" value="<$ searchtext $>">
+  <input type="submit" name="isbn" value="isbn">
+  <input type="submit" name="title" value="title">
+  <input type="submit" name="author" value="author">
+</form>
+
+<div id="result">
+  <table>
+    <tr>
+      <th>isbn</th>
+      <th>title</th>
+      <th>author</th>
+      <th>price</th>
+    </tr>
+% for (unsigned n = 0; n < books.size(); ++n) {
+    <tr>
+      <td><$ books[n].isbn() $></td>
+      <td><$ books[n].title() $></td>
+      <td><$ books[n].author() $></td>
+      <td><$ books[n].price() $></td>
+    </tr>
+% }
+  </table>
+</div>
