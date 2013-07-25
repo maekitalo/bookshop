@@ -57,6 +57,8 @@ namespace
         log_debug("isbn[" << n << "]=\"" << isbns[n] << '"');
         shoppingcart.addBook(bookManager.getBookByIsbn(isbns[n]));
       }
+
+      return reply.redirect("/cart");
     }
     else
     {
