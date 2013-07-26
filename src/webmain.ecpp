@@ -1,6 +1,9 @@
 <%session scope="shared" include="model/shoppingcart.h">
 Shoppingcart shoppingcart;
 </%session>
+<%request scope="shared">
+std::string feedback;
+</%request>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,6 +22,9 @@ Shoppingcart shoppingcart;
         <li class="navitem"><a href="/">Home</a></li>
         <li class="navitem"><a href="/products">Products</a></li>
         <li class="navitem"><a href="/cart">Shopping cart</a></li>
+% if (!shoppingcart.empty()) {
+        <li class="navitem"><a href="/order">Order</a></li>
+% }
       </ul>
     </div>
 
@@ -26,6 +32,9 @@ Shoppingcart shoppingcart;
     <div id="shoppingcart">
       You have currently <span id="countItems"><$ shoppingcart.countProducts() $></span> books in your shopping cart
     </div>
+% }
+% if (!feedback.empty()) {
+    <div id="feedback"><$ feedback $></div>
 % }
 
     <div id="content">

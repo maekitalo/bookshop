@@ -15,9 +15,11 @@ staticSources = \
 bookshop_SOURCES = \
 	configuration.cpp \
 	controller/cart.cpp \
+	controller/order.cpp \
 	controller/products.cpp \
 	main.cpp \
 	manager/bookmanager.cpp \
+	manager/ordermanager.cpp \
 	model/shoppingcart.cpp \
 	$(ecppSources)
 

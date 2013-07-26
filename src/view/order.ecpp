@@ -1,1 +1,13 @@
+<%session scope="shared" include="model/shoppingcart.h" include="model/orderdata.h">
+Shoppingcart shoppingcart;
+Orderdata orderdata;
+</%session>
 <h1>Your order details</h1>
+
+<form method="post">
+  Name <input type="text" name="name" value="<$ orderdata.name() $>"><br>
+  Street <input type="text" name="street" value="<$ orderdata.street() $>"><br>
+  City <input type="text" name="city" value="<$ orderdata.city() $>"><br>
+  <input type="submit" name="save" value="save data">
+  <input type="submit" name="order" value="order">
+</form>
