@@ -1,5 +1,4 @@
-<%session scope="shared" include="model/shoppingcart.h" include="model/orderdata.h">
-Shoppingcart shoppingcart;
+<%session scope="shared" include="model/orderdata.h">
 Orderdata orderdata;
 </%session>
 <h1>Your order details</h1>
