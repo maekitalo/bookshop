@@ -30,7 +30,7 @@ AM_INCLUDES = -I$(top_srcdir)/src
 
 bookshop_LDFLAGS = -lcxxtools -ltntnet -ltntdb
 
-CLEANFILES = $(ecppSources:.ecpp=.cpp) $(ecppSources:.ecpp=.deps) $(icoSources:.ico=.cpp)
+CLEANFILES = $(ecppSources:.ecpp=.cpp) $(ecppSources:.ecpp=.deps) resources.cpp
 
 #
 # Rules for tntnet applications
