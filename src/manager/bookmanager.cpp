@@ -61,13 +61,13 @@ Books BookManager::getBooksByTitle(const std::string& title)
   {
     tntdb::Row r = *cur;
 
-    Book book;
+    books.push_back(Book());
+    Book book = books.back();
+
     r[0].get(book._isbn);
     r[1].get(book._title);
     r[2].get(book._author);
     r[3].get(book._price);
-
-    books.push_back(book);
   }
 
   return books;
@@ -88,13 +88,13 @@ Books BookManager::getBooksByAuthor(const std::string& author)
   {
     tntdb::Row r = *cur;
 
-    Book book;
+    books.push_back(Book());
+    Book book = books.back();
+
     r[0].get(book._isbn);
     r[1].get(book._title);
     r[2].get(book._author);
     r[3].get(book._price);
-
-    books.push_back(book);
   }
 
   return books;
