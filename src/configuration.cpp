@@ -19,6 +19,7 @@
 
 #include <configuration.h>
 #include <cxxtools/properties.h>
+#include <cxxtools/serializationinfo.h>
 #include <fstream>
 
 /*
@@ -38,7 +39,7 @@ void operator>>= (const cxxtools::SerializationInfo& si, Configuration& config)
   si.getMember("listen.port") >>= config._listenPort;
   si.getMember("sessiontimeout") >>= config._sessionTimeout;
   si.getMember("dburl") >>= config._dburl;
-  config._loggingConfiguration = si;
+  si >>= config._loggingConfiguration;
 }
 
 void Configuration::readConfiguration(const std::string& file)

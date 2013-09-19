@@ -21,7 +21,12 @@
 #define CONFIGURATION_H
 
 #include <string>
-#include <cxxtools/serializationinfo.h>
+#include <cxxtools/log.h>
+
+namespace cxxtools
+{
+  class SerializationInfo;
+}
 
 class Configuration
 {
@@ -44,7 +49,7 @@ class Configuration
     const std::string& dburl() const
     { return _dburl; }
 
-    const cxxtools::SerializationInfo& loggingConfiguration() const
+    const cxxtools::LogConfiguration& loggingConfiguration() const
     { return _loggingConfiguration; }
 
   private:
@@ -56,7 +61,7 @@ class Configuration
     unsigned short _listenPort;
     unsigned       _sessionTimeout;
     std::string    _dburl;
-    cxxtools::SerializationInfo _loggingConfiguration;
+    cxxtools::LogConfiguration _loggingConfiguration;
 };
 
 #endif // CONFIGURATION_H
