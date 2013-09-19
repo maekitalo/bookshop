@@ -2,7 +2,6 @@ AC_INIT([bookshop], [0.1], [tommi@tntnet.org], [http://www.tntnet.org])
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_PROG_CC
 AC_PROG_CXX
 AC_LANG(C++)
 
