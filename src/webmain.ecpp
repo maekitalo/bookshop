@@ -9,7 +9,7 @@ std::string feedback;
   <head>
     <meta charset="utf-8">
     <meta name="description" content="tntnet bookshop demo">
-    <link rel="stylesheet" href="/resources/tntnet.css" type="text/css">
+    <link rel="stylesheet" href="/tntnet.css" type="text/css">
   </head>
   <body>
     <div id="header">
