@@ -1,5 +1,4 @@
 <%args>
-searchtype = "isbn";
 searchtext;
 </%args>
 <%session scope="shared" include="model/book.h">

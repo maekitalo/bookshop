@@ -24,6 +24,7 @@
 #include <manager/bookmanager.h>
 #include <model/book.h>
 #include <model/shoppingcart.h>
+#include <tntdb/error.h>
 #include <cxxtools/log.h>
 
 log_define("controller.products")
@@ -67,7 +68,13 @@ namespace
       {
         log_debug("search by isbn " << searchtext);
         books.clear();
-        books.push_back(bookManager.getBookByIsbn(searchtext));
+        try
+        {
+          books.push_back(bookManager.getBookByIsbn(searchtext));
+        }
+        catch (const tntdb::NotFound&)
+        {
+        }
       }
       else if (qparam.arg<bool>("title"))
       {

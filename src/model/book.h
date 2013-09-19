@@ -31,6 +31,7 @@ class Book
 
   public:
     Book()
+      : _price(0)
     { }
 
     Book(const std::string& isbn, const std::string& title, const std::string& author, double price)
