@@ -38,6 +38,61 @@ To set up autotools, we have to create a file called `configure.ac` in our top
 level directory. If you look at the bookshop project, only a few lines are needed
 in `configure.ac`.
 
+To build the bookshop demo, run the following commands in the source directory:
+
+    autoreconf -i
+    ./configure
+    make
+
+`autoreconf -i` will create the `configure` script, which then checks the
+system and creates Makefiles. `make` builds the software. You will have a
+process `bookshop` in the src directory. To run the software, set up a database,
+configure the dburl in src/bookshop.conf and run the bookshop process in the src
+directory.
+
+Setting up the database
+-----------------------
+
+You should consult your administration guide of your database system, how to set
+up a database. You find a sql script db/bookshop.sql, which creates the needed
+tables. The script works at least with postgresql and sqlite. The sql script
+db/data.sql inserts some test records.
+
+### Sqlite
+
+With sqlite you do not need to run a server or even create a database. The
+database is a file, which is created when accessed first.
+
+To create the database enter these commands:
+
+    sqlite3 bookshop.db <db/bookshop.sql
+    sqlite3 bookshop.db <db/data.sql
+
+The dburl is `sqlite:bookshop.db`.
+
+### Postgresql
+
+To create the database enter these commands:
+
+    createdb bookshop
+    psql bookshop -f db/bookshop.sql
+    psql bookshop -f db/data.sql
+
+You have to make sure, you have enough permissions to create the database.
+Consult the postgresql administration guide for that.
+
+The dburl is `postgresql:dbname=bookshop`
+
+### Mysql
+
+To create the database enter these commands:
+
+    mysqladmin create bookshop
+    mysql bookshop <db/bookshop.sql
+    mysql bookshop <db/data.sql
+
+The dburl is `mysql:dbname=bookshop`
+
 Directory structure
 -------------------
 
