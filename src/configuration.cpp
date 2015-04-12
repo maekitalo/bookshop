@@ -38,6 +38,7 @@ void operator>>= (const cxxtools::SerializationInfo& si, Configuration& config)
   si.getMember("listen.ip", config._listenIp);
   si.getMember("listen.port") >>= config._listenPort;
   si.getMember("sessiontimeout") >>= config._sessionTimeout;
+  si.getMember("accessLog", config._accessLog);
   si.getMember("dburl") >>= config._dburl;
   si >>= config._loggingConfiguration;
 }

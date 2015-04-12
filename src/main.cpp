@@ -42,6 +42,9 @@ int main(int argc, char* argv[])
     tnt::Configurator configurator(app);
     configurator.setSessionTimeout(configuration.sessionTimeout());
 
+    if (!configuration.accessLog().empty())
+      configurator.setAccessLog(configuration.accessLog());
+
     // configure static stuff - lookup files in static resources first
     app.mapUrl("^/(.*)", "resources")
        .setPathInfo("resources/$1");

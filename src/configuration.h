@@ -49,6 +49,9 @@ class Configuration
     const std::string& dburl() const
     { return _dburl; }
 
+    const std::string& accessLog() const
+    { return _accessLog; }
+
     const cxxtools::LogConfiguration& loggingConfiguration() const
     { return _loggingConfiguration; }
 
@@ -61,6 +64,7 @@ class Configuration
     unsigned short _listenPort;
     unsigned       _sessionTimeout;
     std::string    _dburl;
+    std::string    _accessLog;
     cxxtools::LogConfiguration _loggingConfiguration;
 };
 
