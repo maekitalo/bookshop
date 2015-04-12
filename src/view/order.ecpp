@@ -1,6 +1,4 @@
-<%session scope="shared" include="model/orderdata.h">
-Orderdata orderdata;
-</%session>
+<%include>model/order.ecpp</%include>
 <h1>Your order details</h1>
 
 <form method="post">

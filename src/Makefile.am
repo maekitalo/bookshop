@@ -4,6 +4,9 @@ bin_PROGRAMS = bookshop
 
 ecppSources = \
     index.ecpp \
+	controller/cart.ecpp \
+	controller/order.ecpp \
+	controller/products.ecpp \
 	view/cart.ecpp \
 	view/order.ecpp \
 	view/products.ecpp \
@@ -14,9 +17,6 @@ staticSources = \
 
 bookshop_SOURCES = \
 	configuration.cpp \
-	controller/cart.cpp \
-	controller/order.cpp \
-	controller/products.cpp \
 	main.cpp \
 	manager/bookmanager.cpp \
 	manager/ordermanager.cpp \

@@ -1,9 +1,4 @@
-<%session scope="shared" include="model/shoppingcart.h">
-Shoppingcart shoppingcart;
-</%session>
-<%request scope="shared">
-std::string feedback;
-</%request>
+<%include>global.ecpp</%include>
 <!DOCTYPE html>
 <html>
   <head>

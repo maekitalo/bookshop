@@ -1,17 +1,15 @@
 <%args>
 searchtext;
 </%args>
-<%session scope="shared" include="model/book.h">
-Books books;
-</%session>
+<%include>model/products.ecpp</%include>
 <h1>Products</h1>
 
 <form method="post">
   search:
   <input type="text" name="searchtext" value="<$ searchtext $>">
-  <input type="submit" name="isbn" value="isbn">
-  <input type="submit" name="title" value="title">
-  <input type="submit" name="author" value="author">
+  <input type="submit" name="isbnSearch" value="isbn">
+  <input type="submit" name="titleSearch" value="title">
+  <input type="submit" name="authorSearch" value="author">
 </form>
 
 <form method="post">

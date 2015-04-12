@@ -1,6 +1,4 @@
-<%session scope="shared" include="model/shoppingcart.h">
-Shoppingcart shoppingcart;
-</%session>
+<%include>global.ecpp</%include>
 <h1>Your shopping cart</h1>
 
 <form method="post">
