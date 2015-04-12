@@ -1,0 +1,33 @@
+<%include>global.ecpp</%include>
+<%include>model/order.ecpp</%include>
+<%args>
+bool save;
+bool order;
+</%args>
+<%pre>
+#include <manager/ordermanager.h>
+</%pre>
+<%cpp>
+
+if (save)
+{
+  orderdata.name(qparam.arg<std::string>("name"));
+  orderdata.street(qparam.arg<std::string>("street"));
+  orderdata.city(qparam.arg<std::string>("city"));
+}
+else if (order)
+{
+  orderdata.name(qparam.arg<std::string>("name"));
+  orderdata.street(qparam.arg<std::string>("street"));
+  orderdata.city(qparam.arg<std::string>("city"));
+
+  OrderManager orderManager;
+  orderManager.storeOrder(orderdata, shoppingcart);
+
+  shoppingcart = Shoppingcart();
+  feedback = "thank you for your order";
+}
+
+return DECLINED;
+
+</%cpp>

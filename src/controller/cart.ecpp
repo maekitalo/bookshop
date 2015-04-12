@@ -1,0 +1,23 @@
+<%include>global.ecpp</%include>
+<%cpp>
+
+log_debug("cart controller");
+
+if (qparam.arg<bool>("updateAmount"))
+{
+  std::vector<unsigned> amounts = qparam.args<unsigned>("amount");
+  Books books = shoppingcart.books();
+
+  log_debug(amounts.size() << " amounts " << books.size() << " books");
+
+  for (unsigned n = 0; n < books.size() && n < amounts.size(); ++n)
+  {
+    log_debug(n << ": set amount of " << books[n].title() << " to " << amounts[n]);
+    shoppingcart.setBookAmount(books[n], amounts[n]);
+  }
+}
+
+
+return DECLINED;
+
+</%cpp>

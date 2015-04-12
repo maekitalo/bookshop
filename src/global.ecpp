@@ -1,0 +1,6 @@
+<%session include="model/shoppingcart.h">
+Shoppingcart shoppingcart;
+</%session>
+<%request>
+std::string feedback;
+</%request>

@@ -1,0 +1,61 @@
+<%include>model/products.ecpp</%include>
+<%include>global.ecpp</%include>
+<%args>
+bool add;
+bool isinSearch;
+bool titleSearch;
+bool authorSearch;
+</%args>
+<%pre>
+#include <manager/bookmanager.h>
+#include <tntdb/error.h>
+</%pre>
+<%cpp>
+
+log_debug("products controller");
+
+BookManager bookManager;
+
+if (add)
+{
+  log_debug("add q=" << qparam.getUrl());
+  std::vector<std::string> isbns = qparam.args<std::string>("isbn");
+  log_debug(isbns.size() << " isbns");
+  for (unsigned n = 0; n < isbns.size(); ++n)
+  {
+    log_debug("isbn[" << n << "]=\"" << isbns[n] << '"');
+    shoppingcart.addBook(bookManager.getBookByIsbn(isbns[n]));
+  }
+
+  return reply.redirect("/cart");
+}
+else
+{
+  std::string searchtext = qparam.arg<std::string>("searchtext");
+  if (isinSearch)
+  {
+    log_debug("search by isbn " << searchtext);
+    books.clear();
+    try
+    {
+      books.push_back(bookManager.getBookByIsbn(searchtext));
+    }
+    catch (const tntdb::NotFound&)
+    {
+    }
+  }
+  else if (titleSearch)
+  {
+    log_debug("search by title " << searchtext);
+    books = bookManager.getBooksByTitle(searchtext);
+  }
+  else if (authorSearch)
+  {
+    log_debug("search by author " << searchtext);
+    books = bookManager.getBooksByAuthor(searchtext);
+  }
+}
+
+return DECLINED;
+
+</%cpp>
