@@ -2,7 +2,7 @@
 <%include>global.ecpp</%include>
 <%args>
 bool add;
-bool isinSearch;
+bool isbnSearch;
 bool titleSearch;
 bool authorSearch;
 </%args>
@@ -32,7 +32,7 @@ if (add)
 else
 {
   std::string searchtext = qparam.arg<std::string>("searchtext");
-  if (isinSearch)
+  if (isbnSearch)
   {
     log_debug("search by isbn " << searchtext);
     books.clear();
