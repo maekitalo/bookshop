@@ -1,4 +1,4 @@
-AC_INIT([bookshop], [0.1], [tommi@tntnet.org], [http://www.tntnet.org])
+AC_INIT([bookshop], [0.1], [tommi@tntnet.org])
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_MACRO_DIR([m4])
 

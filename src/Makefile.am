@@ -26,9 +26,22 @@ bookshop_SOURCES = \
 nodist_bookshop_SOURCES = \
 	resources.cpp
 
+nobase_include_HEADERS = \
+	configuration.h \
+	manager/bookmanager.h \
+	manager/ordermanager.h \
+	model/shoppingcart.h \
+	model/book.h \
+	model/orderdata.h \
+	global.ecpp \
+	model/order.ecpp \
+	model/products.ecpp
+
 AM_INCLUDES = -I$(top_srcdir)/src
 
 bookshop_LDFLAGS = -lcxxtools -ltntnet -ltntdb
+
+nobase_dist_noinst_DATA = $(staticSources)
 
 CLEANFILES = $(ecppSources:.ecpp=.cpp) $(ecppSources:.ecpp=.deps) resources.cpp
 
