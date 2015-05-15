@@ -44,11 +44,10 @@ To build the bookshop demo, run the following commands in the source directory:
     ./configure
     make
 
-`autoreconf -i` will create the `configure` script, which then checks the
-system and creates Makefiles. `make` builds the software. You will have a
-process `bookshop` in the src directory. To run the software, set up a database,
-configure the dburl in src/bookshop.conf and run the bookshop process in the src
-directory.
+`autoreconf -i` will create the `configure` script, which then checks the system
+and creates Makefiles. `make` builds the software. You will have a process
+`bookshop`. To run the software, set up a database, configure the dburl in
+bookshop.conf and run the bookshop process directory.
 
 Setting up the database
 -----------------------
